@@ -13,6 +13,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
+        $schedule->command('app:hitung-denda')->daily(); // Tugas akan dijalankan setiap hari
     }
 
     /**

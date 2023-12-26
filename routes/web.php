@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BarangController;
 use App\Http\Controllers\BarangkeluarController;
 use App\Http\Controllers\BarangmasukController;
+use App\Http\Controllers\BukuController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LaporanpersediaanController;
 use App\Http\Controllers\PbarangController;
@@ -32,13 +32,13 @@ Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 
 Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
 
-Route::get('/barang', [BarangController::class, 'index'])->middleware('auth');
-Route::post('/barang', [BarangController::class, 'store'])->middleware('auth');
-Route::get('/barang-add', [BarangController::class, 'create'])->middleware('auth');
-Route::get('/barang-edit/{kodebarang}', [BarangController::class, 'edit'])->middleware('auth');
-Route::put('/barang/{kodebarang}', [BarangController::class, 'update'])->middleware('auth');
-Route::get('/barang-delete/{kodebarang}', [BarangController::class, 'delete'])->middleware('auth');
-Route::delete('/barang-destroy/{kodebarang}', [BarangController::class, 'destroy'])->middleware('auth');
+Route::get('/buku', [BukuController::class, 'index'])->middleware('auth');
+Route::post('/buku', [BukuController::class, 'store'])->middleware('auth');
+Route::get('/buku-add', [BukuController::class, 'create'])->middleware('auth');
+Route::get('/buku-edit/{id}', [BukuController::class, 'edit'])->middleware('auth');
+Route::put('/buku/{id}', [BukuController::class, 'update'])->middleware('auth');
+Route::get('/buku-delete/{id}', [BukuController::class, 'delete'])->middleware('auth');
+Route::delete('/buku-destroy/{id}', [BukuController::class, 'destroy'])->middleware('auth');
 
 Route::get('/barangmasuk', [BarangmasukController::class, 'index'])->middleware('auth');
 Route::post('/barangmasuk', [BarangmasukController::class, 'store'])->middleware('auth');
@@ -107,3 +107,15 @@ Route::get('/cetak-laporanpermintaanbarang-pertanggal/{tglawal}/{tglakhir}',
 Route::get('/laporanpermintaanproduksi', [PproduksiController::class, 'laporan'])->middleware('auth');
 Route::get('/cetak-laporanpermintaanproduksi-pertanggal/{tglawal}/{tglakhir}',
     [PproduksiController::class, 'cetakPertanggal'])->middleware('auth');
+
+
+
+Route::group(['middleware' => 'web'], function () {
+    Route::get('/login/petugas', 'PetugasAuth\LoginController@showLoginForm')->name('petugas.login');
+    Route::post('/login/petugas', 'PetugasAuth\LoginController@login');
+    // Tambahkan rute lainnya untuk autentikasi Petugas
+
+    Route::get('/login/anggota', 'AnggotaAuth\LoginController@showLoginForm')->name('anggota.login');
+    Route::post('/login/anggota', 'AnggotaAuth\LoginController@login');
+    // Tambahkan rute lainnya untuk autentikasi Anggota
+});

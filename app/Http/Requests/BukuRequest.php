@@ -22,8 +22,13 @@ class BarangRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'namabarang' => 'required|unique:barangs',
-            'stok' => 'required|numeric',
+            'judul' => 'required',
+            'id_penulis' => 'required',
+            'id_penerbit' => 'required',
+            'id_kategori' => 'required',
+            'tahun_terbit' => 'required|integer',
+            'isbn' => 'required|unique:buku,isbn',
+            'jumlah_tersedia' => 'required|integer',
         ];
 
     }
@@ -31,10 +36,10 @@ class BarangRequest extends FormRequest
     public function messages()
     {
         return [
-            'namabarang.required' => 'Nama Barang Harus Diisi',
-            'namabarang.unique' => 'Nama Barang Sudah Ada',
-            'stok.numeric' => 'Stok Harus Berisi Angka',
-            'stok.required' => 'Stok Harus Diisi',
+            // 'namabarang.required' => 'Nama Barang Harus Diisi',
+            // 'namabarang.unique' => 'Nama Barang Sudah Ada',
+            // 'stok.numeric' => 'Stok Harus Berisi Angka',
+            // 'stok.required' => 'Stok Harus Diisi',
         ];
     }
 }

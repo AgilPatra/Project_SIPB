@@ -1,13 +1,13 @@
 @extends('layouts.main')
-@section('title','barang-delete')
+@section('title','buku-delete')
 @section('content')
-<h2>Hapus Data {{$barang->kodebarang}} ({{$barang->kodebarang}}) </h2>
+<h2>Hapus Data {{$buku->id}} ({{$buku->id}}) </h2>
 <hr>
 
-<form style="display: inline-block" action="/barang-destroy/{{$barang->kodebarang}}" method="POST">
+<form style="display: inline-block" action="/buku-destroy/{{$buku->id}}" method="POST">
     @csrf
     @method('delete')
 <button type="submit" class="btn btn-danger">Hapus</button>
 </form>
-<a href="/barang" class="btn btn-primary">Batal</a>
+<a href="/buku" class="btn btn-primary">Batal</a>
 @endsection

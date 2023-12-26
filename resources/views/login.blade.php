@@ -39,7 +39,7 @@
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h2 class="h2 text-gray-900 mb-4">
-                                            Sistem Informasi Persediaan Barang <br> CV. Amarta Furniture</h2>
+                                            Sistem Pencatatan Persediaan Barang Gudang</h2>
                                             <hr>
                                     </div>
                                     <div class="text-center">

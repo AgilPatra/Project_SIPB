@@ -1,12 +1,12 @@
 @extends('layouts.main')
-@section('title','Barang')
+@section('title','Buku')
 @section('content')
 
 <div class="mb-4">
-<h1>Barang</h1>
+<h1>Buku</h1>
 <hr>
 </div>
-<div class="my-2 mb-4"><a href="barang-add" class="btn btn-primary"><span>Tambah </span>
+<div class="my-2 mb-4"><a href="buku-add" class="btn btn-primary"><span>Tambah </span>
     <i class="fas fa-regular fa-plus"></i></a></div>
 
 @if (Session::has('status'))
@@ -40,26 +40,34 @@
 </div> --}}
 <div class="card shadow mb-4">
 <div class="card-body">
-<table id="barangTable" >
+<table id="bukuTable" >
     <thead>
         <tr class="table table-bordered; table-info" >
-            <th>Kode Barang</th>
-            <th>Nama Barang</th>
-            <th>Stok</th>
-            <th>Jenis</th>
+            <th>ID</th>
+            <th>Judul</th>
+            <th>Penulis</th>
+            <th>Penerbit</th>
+            <th>Kategori</th>
+            <th>Tahun Terbit</th>
+            <th>ISBN</th>
+            <th>Jumlah</th>
             <th>Action</th>
         </tr>
     </thead>
     <tbody>
-        @foreach ($barangList as $data)
+        @foreach ($bukuList as $data)
             <tr class="table table-bordered">
-                <td>{{$data->kodebarang}}</td>
-                <td>{{$data->namabarang}}</td>
-                <td>{{$data->stok}}</td>
-                <td>{{$data->jenis}}</td>
+                <td>{{$data->id}}</td>
+                <td>{{$data->judul}}</td>
+                <td>{{$data->id_penulis}}</td>
+                <td>{{$data->id_penerbit}}</td>
+                <td>{{$data->id_kategori}}</td>
+                <td>{{$data->tahun_terbit}}</td>
+                <td>{{$data->isbn}}</td>
+                <td>{{$data->jumlah_tersedia}}</td>
                 <td>
-                    <a href="barang-edit/{{$data->kodebarang}}" class="btn btn-primary"><span>Edit </span><i class="fas fa-regular fa-pen"></i></a>
-                    <a href="barang-delete/{{$data->kodebarang}}" class="btn btn-secondary"><span>Hapus </span><i class="fas fa-regular fa-trash"></i></a>
+                    <a href="barang-edit/{{$data->id}}" class="btn btn-primary"><span>Edit </span><i class="fas fa-regular fa-pen"></i></a>
+                    <a href="barang-delete/{{$data->id}}" class="btn btn-secondary"><span>Hapus </span><i class="fas fa-regular fa-trash"></i></a>
                 </td>
             </tr>
         @endforeach
@@ -68,7 +76,7 @@
 </div>
 
     <div class="my-9">
-    {{$barangList->links()}}
+    {{$bukuList->links()}}
 </div>
 </div>
 
@@ -77,7 +85,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#barangTable').DataTable();
+        $('#bukuTable').DataTable();
     });
 </script>
     

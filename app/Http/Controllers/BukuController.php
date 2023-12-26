@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\BarangRequest;
 use App\Models\Barang;
+use App\Models\buku;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class BarangController extends Controller
+class BukuController extends Controller
 {
     public function index()
     {
-        $barang = Barang::paginate(10);
+        $buku = buku::paginate(10);
         // return response()->json($barang);
-        return view('/barang', ['barangList' => $barang]);
+        return view('/buku', ['bukuList' => $buku]);
 
     }
 
@@ -22,10 +22,10 @@ class BarangController extends Controller
         // ,['jenis'=>$jenis,'size'=>$size]
         // $jenis= Jenis::all();
         // $size= Size::all();
-        return view('/barang-add');
+        return view('/buku-add');
     }
 
-    public function store(BarangRequest $request)
+    public function store(BukuRequest $request)
     {
         //$bahanbaku = new Barang;
         //$bahanbaku->nama = $request->nama;
@@ -36,26 +36,26 @@ class BarangController extends Controller
         //$bahanbaku->qty = $request->qty;
         //$bahanbaku->save();
 
-        $barang = Barang::create($request->all());
-        if ($barang) {
+        $buku = buku::create($request->all());
+        if ($buku) {
             Session::flash('status', 'Success');
             Session::flash('message', 'Tambah Data Berhasil!');
         }
-        return redirect('/barang');
+        return redirect('/buku');
     }
 
-    public function edit(Request $request, $kodebarang)
+    public function edit(Request $request, $id)
     {
-        $barang = Barang::findOrFail($kodebarang);
+        $buku = buku::findOrFail($id);
         // $jenis = Jenis::all();
         // $size = Size::all();
-        return view('barang-edit', ['barang' => $barang]);
+        return view('buku-edit', ['buku' => $buku]);
         // 'jenis'=>$jenis, 'size'=>$size
     }
 
-    public function update($kodebarang, Request $request)
+    public function update($id, Request $request)
     {
-        $barang = Barang::findOrFail($kodebarang);
+        $buku = buku::findOrFail($id);
         //$bahanbaku->nama= $request->nama;
         //$bahanbaku->tanggal= $request->tanggal;
         //$bahanbaku->jenis= $request->jenis;
@@ -63,30 +63,30 @@ class BarangController extends Controller
         //$bahanbaku->size= $request->size;
         //$bahanbaku->qty= $request->qty;
         //$bahanbaku->save();
-        $barang->update($request->all());
-        if ($barang) {
+        $buku->update($request->all());
+        if ($buku) {
             Session::flash('status', 'Success');
             Session::flash('message', 'Edit Data Berhasil!');
         }
-        return redirect('/barang');
+        return redirect('/buku');
     }
 
-    public function delete($kodebarang)
+    public function delete($id)
     {
-        $barang = Barang::findOrFail($kodebarang);
-        return view('barang-delete', ['barang' => $barang]);
+        $buku = buku::findOrFail($id);
+        return view('buku-delete', ['buku' => $buku]);
     }
 
-    public function destroy($kodebarang)
+    public function destroy($id)
     {
         //query builder $deleteBahanbaku = DB::table('bahanbakus')->where('nama',$nama)->delete();
-        $deleteBarang = Barang::findOrFail($kodebarang);
-        $deleteBarang->delete();
-        if ($deleteBarang) {
+        $deletebuku = buku::findOrFail($id);
+        $deletebuku->delete();
+        if ($deletebuku) {
             Session::flash('status', 'Success');
             Session::flash('message', 'Hapus Data Berhasil!');
         }
-        return redirect('/barang');
+        return redirect('/buku');
     }
 
 }

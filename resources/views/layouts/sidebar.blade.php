@@ -130,8 +130,8 @@
 <div class="sidebar-card d-none d-lg-flex my-2">
     <img class="sidebar-card-illustration mb-2" 
     src="{{asset('assets')}}/img/WhatsApp Image 2022-12-12 at 20.43.20 (1).jpeg" alt="...">
-    <p class="text-center mb-2"><strong>CV AMARTA FURNITURE</strong></p>
-    <p class="text-center mb-2">Sistem Informasi Persediaan Barang</p>
+    
+    <p class="text-center mb-2">Sistem Pencatatan Persediaan Barang</p>
 </div>
 
 </ul>

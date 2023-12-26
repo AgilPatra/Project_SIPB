@@ -1,8 +1,8 @@
 @extends('layouts.main')
-@section('title','barang-add')
+@section('title','buku-add')
 @section('content')
 
-<h2>Silahkan Masukkan Data Barang</h2>
+<h2>Silahkan Masukkan Data Buku</h2>
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -13,30 +13,50 @@
     </div>
 @endif
 <hr>
-    <form action="barang" method="POST">
+    <form action="buku" method="POST">
         @csrf
-        {{-- <div class="mb-3">
-            <label for="kodebarang">Kode Barang</label>
-            <input type="text" class="form-control" name="kodebarang" id="kodebarang" >
-        </div> --}}
         <div class="mb-3">
-            <label for="namabarang">Nama Barang</label>
-            <input type="text" class="form-control" name="namabarang" id="namabarang" required>
+            <label for="">Id</label>
+            <input type="text" class="form-control" name="id" id="id" required>
         </div>
         <div class="mb-3">
-            <label for="stok">Stok</label>
-            <input type="text" class="form-control" name="stok" id="stok" required>
+            <label for="">Judul</label>
+            <input type="text" class="form-control" name="judul" id="namabarang" required>
         </div>
-            <div class="mb-3">
-            <label for="jenis">Jenis</label>
-            <select name="jenis" id="jenis" class="form-control" required>
-                <option value="Bangku">Bangku</option>
-                <option value="Cermin">Cermin</option>
-                <option value="Dekorasi">Dekorasi</option>
-                <option value="Lampu">Lampu</option>
-                <option value="Meja">Meja</option>
-                <option value="Rak">Rak</option>
+        <div class="mb-3">
+            <label for="id_penulis">Penulis</label>
+            <select name="id_penulis" id="id_penulis" class="form-control" required>
+                <option value=""></option>
+                @foreach ($penulis as $data)
+                    <option value="{{$data->id}}">{{$data->id}}-{{$data->nama_penulis}}</option>
+                @endforeach
             </select>
+        </div>
+        <div class="mb-3">
+            <label for="id_penerbit">Penerbit</label>
+            <select name="id_penerbit" id="id_penerbit" class="form-control" required>
+                <option value=""></option>
+                @foreach ($penerbits as $data)
+                    <option value="{{$data->id}}">{{$data->id}}-{{$data->nama_penerbit}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="id_kategori">Kategori</label>
+            <select name="id_kategori" id="id_kategori" class="form-control" required>
+                <option value=""></option>
+                @foreach ($kategoris as $data)
+                    <option value="{{$data->id}}">{{$data->id}}-{{$data->nama_kategori}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="isbn">ISBN</label>
+            <input type="text" class="form-control" name="isbn" id="isbn" >
+        </div>
+        <div class="mb-3">
+            <label for="jumlah_tersedia">Jumlah Tersedia</label>
+            <input type="text" class="form-control" name="jumlah_tersedia" id="jumlah_tersedia" >
         </div>
         <div class="mb-3">
             <button class="btn btn-success" 

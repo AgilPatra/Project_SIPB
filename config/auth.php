@@ -1,5 +1,9 @@
 <?php
 
+use App\Anggota;
+use App\Petugas;
+use App\Models\User;
+
 return [
 
     /*
@@ -40,6 +44,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'petugas' => [
+            'driver' => 'session',
+            'provider' => 'petugas',
+        ],
+        'anggota' => [
+            'driver' => 'session',
+            'provider' => 'anggota',
+        ],
     ],
 
     /*
@@ -62,7 +74,15 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => User::class,
+        ],
+        'petugas' => [
+            'driver' => 'eloquent',
+            'model' => Petugas::class,
+        ],
+        'anggota' => [
+            'driver' => 'eloquent',
+            'model' => Anggota::class,
         ],
 
         // 'users' => [

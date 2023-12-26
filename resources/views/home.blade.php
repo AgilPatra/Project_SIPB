@@ -9,7 +9,7 @@
             <div class="card-header py-3">
                 <a href="/">
                     <h6 class="m-0 font-weight-bold text-white"><i class="fas fa-regular fa-house-user"></i>
-                        <span> Sistem Informasi Persediaan Barang CV Amarta Furniture</span>
+                        <span> Sistem Pencatatan Persediaan Barang</span>
                     </h6>
                 </a>
             </div>
@@ -172,7 +172,7 @@
                             </div>
                         @endif
 
-                     
+
 
 
                     </div>
@@ -214,7 +214,9 @@
         new Chart(ctr, {
             type: 'bar',
             data: {
-                labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September',
+                labels: ['Januari', 'Februari', 'Maret',
+                    'April', 'Mei', 'Juni', 'Juli', 'Agustus',
+                    'September',
                     'Oktober',
                     'November', 'Desember'
                 ],
